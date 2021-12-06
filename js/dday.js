@@ -12,27 +12,28 @@ function saveDDay() {
 }
 
 function deleteDDay(event) {
-  const li = event.target.parentElement;
-  li.remove();
+  const span = event.target.parentElement;
+  span.remove();
   dday.day = null;
   saveDDay();
   dDayForm.classList.remove(HIDDEN_CLASSNAME);
 }
 
 function paintDDay(newDDay) {
-  const li = document.createElement("li");
-  li.id = newDDay.id;
-
+  const today = new Date();
+  const gap = Date.parse(newDDay.day) - today;
+  const countOfDay = Math.floor(gap/(1000*60*60*24));
+  
   const span = document.createElement("span");
-  span.innerText = newDDay.about;
+  span.id = newDDay.id;
+  span.innerText = `${newDDay.about} ${(countOfDay===0)? `D-day!` : (countOfDay>0)? `D-${countOfDay}` : `D+${Math.abs(countOfDay)}`}`;
 
   const button = document.createElement("button");
   button.classList.add("remote");
   button.innerText = "❌";
   button.addEventListener("click", deleteDDay);
-  li.appendChild(span);
-  li.appendChild(button);
-  dDaylist.appendChild(li);
+
+  dDaylist.appendChild(span).appendChild(button);
 }
 
 function handleDDaySubmit(event) {

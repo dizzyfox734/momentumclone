@@ -26,15 +26,24 @@ ul {
 }
 
 #clock {
+  font-size: 64px;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+
+#dday-list {
   font-size: 128px;
   margin-top: 0%;
   margin-bottom: 0%;
 }
 
+#dday-list button {
+  font-size: 107px;
+}
+
 .close {
   background-color: transparents;
 }
-
 
 .remote {
   background-color: transparent;
