@@ -21,7 +21,6 @@ function paintToDo(newTodo) {
   const li = document.createElement("li");
   li.id = newTodo.id;
   const span = document.createElement("span");
-  console.log(newTodo.text);
   span.innerText = newTodo.text;
   const button = document.createElement("button");
   button.classList.add('remote');
@@ -31,6 +30,7 @@ function paintToDo(newTodo) {
   li.appendChild(button);
   toDoList.appendChild(li);
 }
+
 function handleToDoSubmit(event) {
   event.preventDefault();
   const newTodo = toDoInput.value;
